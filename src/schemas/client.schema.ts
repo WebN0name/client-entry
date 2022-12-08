@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument } from "mongoose";
+import * as mongoosePaginate from 'mongoose-paginate-v2';
 
 export type ClientDocument = HydratedDocument<Client>
 
@@ -16,6 +17,6 @@ export class Client {
     lastName: string
 }
 
-export const ClientSchema = SchemaFactory.createForClass(Client)
+export const ClientSchema = SchemaFactory.createForClass(Client).plugin(mongoosePaginate)
 
 export const ClientSchemaAlias = 'client'
